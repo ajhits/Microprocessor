@@ -64,7 +64,7 @@ void seletion() {
     //R1 = !digitalRead(A0);
     
     //Aritmetic with carry operation
-    F = A
+    //F = A
     R4 = digitalRead(A3);
 	  R3 = digitalRead(A2);
     R2 = digitalRead(A1);
