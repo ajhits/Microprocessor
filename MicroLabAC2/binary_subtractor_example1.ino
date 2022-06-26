@@ -47,7 +47,7 @@ void setup()
 void loop(){
   
 delay(200);
- int Cin = 0; //Carry
+ int Borrow = 0; //Carry
   
   //A = 1110
   //B = 0011
@@ -57,37 +57,37 @@ delay(200);
   //tama sakin
  
   //S1 
-  int s1 = digitalRead(A3) ^ (InputB[3] ^ Cin) ^ Cin; // 0
+  int s1 = digitalRead(A3) ^ (InputB[3] ^ Borrow) ^ Borrow; // 0
   
   //Carry
-  Cin = 
-    digitalRead(A3) ^ (InputB[3] ^ Cin) & Cin | 
+  Borrow = 
+    digitalRead(A3) ^ (InputB[3] ^ Borrow) & Borrow | 
     digitalRead(A3) & InputB[3] ; 
   
   //s2
-   int s2 = digitalRead(A2) ^ (InputB[2] ^ Cin) ^ Cin; // 0
+   int s2 = digitalRead(A2) ^ (InputB[2] ^ Borrow) ^ Borrow; // 0
  //Carry
-  Cin = 
-    (digitalRead(A2) ^ (InputB[2] ^ Cin) & Cin )| 
+  Borrow = 
+    (digitalRead(A2) ^ (InputB[2] ^ Borrow) & Borrow )| 
     digitalRead(A2)& InputB[2]; 
  
   //s3
-   int s3 = digitalRead(A1) ^ (InputB[1] ^ Cin) ^ Cin; // 0
+   int s3 = digitalRead(A1) ^ (InputB[1] ^ Borrow) ^ Borrow; // 0
  //Carry
-  Cin = 
-    (digitalRead(A1) ^ (InputB[1] ^ Cin) & Cin )| 
+  Borrow = 
+    (digitalRead(A1) ^ (InputB[1] ^ Borrow) & Borrow )| 
     (digitalRead(A1)& InputB[1]);
   
   
   //s4
-   int s4 = digitalRead(A0) ^ (InputB[0] ^ Cin) ^ Cin; // 0
+   int s4 = digitalRead(A0) ^ (InputB[0] ^ Borrow) ^ Borrow; // 0
  //Carry
-  Cin = 
-    (digitalRead(A0) ^ (InputB[0] ^ Cin) & Cin )| 
+  Borrow = 
+    (digitalRead(A0) ^ (InputB[0] ^ Borrow) & Borrow )| 
     (digitalRead(A0)& InputB[0]); 
   
  
-  digitalWrite(10,Cin);
+  digitalWrite(10,Borrow);
   digitalWrite(9,s4);
   digitalWrite(8,s3);
   digitalWrite(7,s2);
@@ -97,39 +97,3 @@ delay(200);
   Serial.println(".......\n");
   
 }
-
-
- 
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
