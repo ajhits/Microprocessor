@@ -81,7 +81,7 @@ void seletion() {
    // F = A + B
     digitalWrite(6, HIGH); 
     
-    
+     digitalWrite(6, LOW); 
     Serial.println("2 selection");
   }
   
