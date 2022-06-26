@@ -57,8 +57,9 @@ void seletion() {
     
     
     //Logical Operation
+     //F = A'
     R4 = !digitalRead(A3);
-	R3 = !digitalRead(A2);
+	  R3 = !digitalRead(A2);
     R2 = !digitalRead(A1);
     R1 = !digitalRead(A0);
     
@@ -68,8 +69,6 @@ void seletion() {
     digitalWrite(9, R1);
     
     Serial.println("1 selection" );
-
-    
   }
   
   //LLLH
@@ -78,6 +77,11 @@ void seletion() {
       digitalRead(value_A3) == 0 &
       digitalRead(value_A4) == 1)
   {
+
+   // F = A + B
+    digitalWrite(6, HIGH); 
+    
+    
     Serial.println("2 selection");
   }
   
