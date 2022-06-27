@@ -46,7 +46,7 @@ void setup()
 
 //selection
 void seletion() {
- 
+ /// testet
   //LLLL
   if (digitalRead(value_A1) == 0 & 
       digitalRead(value_A2) == 0 &
@@ -59,7 +59,7 @@ void seletion() {
     //Logical Operation 
     //F = A’
     //R4 = !digitalRead(A3);
-	//R3 = !digitalRead(A2);
+	  //R3 = !digitalRead(A2);
     //R2 = !digitalRead(A1);
     //R1 = !digitalRead(A0);
     
