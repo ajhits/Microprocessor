@@ -869,14 +869,68 @@ void seletion() {
     Serial.println("13 selection");
   }  
   
-  //HHLH 
+  
+   //HHLH  //(A + B) PLUS A
   else if (digitalRead(value_A1) == 1 & 
       digitalRead(value_A2) == 1 &
       digitalRead(value_A3) == 0 &
       digitalRead(value_A4) == 1)
   {
+    
+    int Cins=0;
+     // w/ carry
+    // F = A + B
+    R4 = digitalRead(A3)| InputB[3];
+    R3 = digitalRead(A2)| InputB[2];
+    R2 = digitalRead(A1)| InputB[1];
+    R1 = digitalRead(A0)| InputB[0];
+
+  //(A + B) PLUS A
+     //S1 
+  int s1 =  digitalRead(A3) ^ R4 ^ Cins; // 0
+  
+  //Carry
+  Cins = 
+     digitalRead(A3) ^ R4  & Cins | 
+    digitalRead(A3) &  R4; // 1
+ 
+  //s2
+  int s2 = digitalRead(A2) ^ R3 ^  Cins; // 0
+  //Carry
+  Cins = 
+    digitalRead(A2)^  R3 & Cins | 
+     digitalRead(A2) & R3  ; // 1
+ 
+  
+  //s3
+  int s3 =  digitalRead(A3) ^ R2 ^ Cins;
+  //Carry
+  Cins = 
+     digitalRead(A1)^ R2  & Cins | 
+    digitalRead(A1) & R2  ;
+  
+  //s4
+  int s4 =  digitalRead(A0)^ R1  ^ Cins;
+  //Carry
+  Cins = 
+     digitalRead(A0) ^ R1 & Cins | 
+     digitalRead(A0) & R1  ;
+    
+    digitalWrite(10,Cins);
+    digitalWrite(9,s4);
+    digitalWrite(8,s3);
+    digitalWrite(7,s2);
+    digitalWrite(6,s1);
+    
+    Serial.println(s4);
+    Serial.println(s3);
+    Serial.println(s2);
+    Serial.println(s1);
+    
     Serial.println("14 selection");
-  } 
+    
+ 
+}
   
   //HHHL louise
   else if (digitalRead(value_A1) == 1 & 
@@ -1036,4 +1090,3 @@ void loop(){
 
   
 }
-
