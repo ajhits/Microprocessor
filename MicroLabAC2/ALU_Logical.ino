@@ -78,10 +78,24 @@ void seletion() {
       digitalRead(value_A4) == 1)
   {
 
-   // F = A + B
-    digitalWrite(6, HIGH); 
+    //Logical Operation
+    // F (A + B)'
+    R4 = digitalRead(A3) || InputB[0];
+	  R3 = digitalRead(A2) || InputB[1];
+    R2 = digitalRead(A1) || InputB[2];
+    R1 = digitalRead(A0) || InputB[3];
     
-     digitalWrite(6, LOW); 
+    //Inverted
+    R4 = !InputB[0];
+    R3 = !InputB[1];
+    R2 = !InputB[2];
+    R1 = !InputB[3];
+      
+    digitalWrite(6, R1);
+    digitalWrite(7, R2);
+    digitalWrite(8, R3);
+    digitalWrite(9, R4);
+
     Serial.println("2 selection");
   }
   
@@ -92,16 +106,34 @@ void seletion() {
       digitalRead(value_A3) == 1 &
       digitalRead(value_A4) == 0)
   {
+
+    //Logical Operation
+    // F = A' B
+    R4 = !digitalRead(A3); 
+    R3 = !digitalRead(A2);
+    R2 = !digitalRead(A1);
+    R1 = !digitalRead(A0);
+      
+    R4 = digitalRead(A3) && InputB[0];
+	  R3 = digitalRead(A2) && InputB[1];
+    R2 = digitalRead(A1) && InputB[2];
+    R1 = digitalRead(A0) && InputB[3];
+    
+    digitalWrite(6, R4);
+    digitalWrite(7, R3);
+    digitalWrite(8, R2);
+    digitalWrite(9, R1);  
+    
     Serial.println("3 selection");
   }
   
-    
   //LLHH
   else if (digitalRead(value_A1) == 0 & 
       digitalRead(value_A2) == 0 &
       digitalRead(value_A3) == 1 &
       digitalRead(value_A4) == 1)
   {
+    
     Serial.println("4 selection");
   }
     
