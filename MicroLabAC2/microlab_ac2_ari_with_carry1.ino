@@ -824,6 +824,48 @@ void seletion() {
       digitalRead(value_A3) == 0 &
       digitalRead(value_A4) == 0)
   {
+    //HHLL
+    //F= A PLUS A
+    //A = 0001
+    //F = 0010
+
+    
+    //A PLUS A
+    
+ 	//S1 
+    int s1 = digitalRead(A3) ^ digitalRead(A3) ^ Cin; // 0
+  
+  	//Carry
+  	Cin = digitalRead(A3) ^ digitalRead(A3) & Cin | 
+      digitalRead(A3)& digitalRead(A3) ; // 1
+    
+    //S2 
+    int s2 = digitalRead(A2) ^ digitalRead(A2) ^ Cin; // 0
+  
+  	//Carry
+  	Cin = digitalRead(A2) ^ digitalRead(A2) & Cin | 
+      digitalRead(A2)& digitalRead(A2);  
+  
+     //S3 
+    int s3 = digitalRead(A1) ^ digitalRead(A1) ^ Cin; // 0
+  
+  	//Carry
+  	Cin = digitalRead(A1) ^ digitalRead(A1) & Cin | 
+      digitalRead(A1)& digitalRead(A1);    
+      
+     //S4 
+    int s4 = digitalRead(A0) ^ digitalRead(A0) ^ Cin; // 0
+  
+  	//Carry
+  	Cin = digitalRead(A0) ^ digitalRead(A0) & Cin | 
+      digitalRead(A0)& digitalRead(A0);
+    
+  digitalWrite(10,Cin);
+  digitalWrite(9,s4);
+  digitalWrite(8,s3);
+  digitalWrite(7,s2);
+  digitalWrite(6,s1);
+    
     Serial.println("13 selection");
   }  
   
@@ -902,9 +944,83 @@ void seletion() {
     Serial.print(A4);
   }  
 /////////////////////last session ni louise  
-  //HHHH
+  //HHHH F=A MINUS 1
   else 
   {
+    //nandito si Franz nagcocode
+    
+     int Cout = 0;
+    int Cinc = 0;
+    int fCout=0; // final carry
+    
+ 
+   //1 = 0 0 0 1 
+    //invert C = 0 0 0 1
+    int D1= (!value1[3]);
+    int D2= (!value1[2]);
+    int D3= (!value1[1]);
+    int D4= (!value1[0]);
+    
+       
+  
+    int s5 = D1 ^ value1[3] ^ Cinc;
+    //Carry
+  Cinc =( D1 ^ value1[3]) & Cinc |  D1 & value1[3] ; 
+  
+   int s6 = D2^ value1[2] ^ Cinc;
+    //Carry
+  Cinc =( D2^ value1[2]) & Cinc | D2& value1[2] ; 
+  
+   int s7 = D3^ value1[1] ^ Cinc;
+    //Carry
+  Cinc =( D3^ value1[1]) & Cinc | D3& value1[1] ; 
+  
+    
+ int s8 = D4^ value1[0] ^ Cinc;
+    //Carry
+  Cinc =( D4^ value1[0]) & Cinc | D4 & value1[0] ; 
+    
+    //S4 S3 S2 S1
+    //S8 S7 S6 S5
+    
+   int f1 =  digitalRead(A3) ^ s8 ^ fCout; 
+  
+  //Carry
+  fCout =( digitalRead(A3) ^ s8) & fCout | 
+     digitalRead(A3) & s8 ; 
+  
+  int f2 = digitalRead(A2) ^ s7 ^ fCout; 
+  
+  //Carry
+  fCout =( digitalRead(A2) ^ s7) & fCout | 
+     digitalRead(A2) & s7 ;
+  
+  int f3 =  digitalRead(A1) ^ s6^ fCout; 
+  
+  //Carry
+  fCout =( digitalRead(A1) ^ s6) & fCout | 
+     digitalRead(A1) & s6 ; 
+  
+ int f4 = digitalRead(A0) ^ s5 ^ fCout; 
+  
+  //Carry
+  fCout = (digitalRead(A0) ^ s5) & fCout | 
+     digitalRead(A0) & s5 ; 
+    
+     
+     Serial.println(f4);
+     Serial.println(f3);
+       Serial.println(f2);
+       Serial.println(f1);
+    
+   
+     digitalWrite(9,f4);
+    digitalWrite(8,f3);
+    digitalWrite(7,f2);
+    digitalWrite(6,f1);
+
+    
+    
     Serial.println("16 selection");
   }    
 }
