@@ -61,7 +61,7 @@ void seletion() {
     // F = A'
     // T
     R4 = !digitalRead(A3);
-	R3 = !digitalRead(A2);
+	  R3 = !digitalRead(A2);
     R2 = !digitalRead(A1);
     R1 = !digitalRead(A0);
     
@@ -86,7 +86,7 @@ void seletion() {
     // F (A + B)'
     // T
     R4 = digitalRead(A3) || InputB[0];
-	R3 = digitalRead(A2) || InputB[1];
+	  R3 = digitalRead(A2) || InputB[1];
     R2 = digitalRead(A1) || InputB[2];
     R1 = digitalRead(A0) || InputB[3];
     
@@ -116,12 +116,12 @@ void seletion() {
     // F = A' B
     // T
     R4 = !digitalRead(A3);
-	R3 = !digitalRead(A2); 
+	  R3 = !digitalRead(A2); 
     R2 = !digitalRead(A1);
     R1 = !digitalRead(A0); 
     
     R4 = digitalRead(A3) && InputB[0];
-	R3 = digitalRead(A2) && InputB[1];
+	  R3 = digitalRead(A2) && InputB[1];
     R2 = digitalRead(A1) && InputB[2];
     R1 = digitalRead(A0) && InputB[3];
     
@@ -162,7 +162,7 @@ void seletion() {
     // F = (AB)'
     // T
     R4 = digitalRead(A3) && InputB[0];
-	R3 = digitalRead(A2) && InputB[1];
+	  R3 = digitalRead(A2) && InputB[1];
     R2 = digitalRead(A1) && InputB[2];
     R1 = digitalRead(A0) && InputB[3];
     
@@ -211,7 +211,7 @@ void seletion() {
     // F = A XOR B
     // T
     R4 = digitalRead(A0) ^ InputB[0];
-	R3 = digitalRead(A1) ^ InputB[1];
+	  R3 = digitalRead(A1) ^ InputB[1];
     R2 = digitalRead(A2) ^ InputB[2];
     R1 = digitalRead(A3) ^ InputB[3];
     
@@ -234,7 +234,7 @@ void seletion() {
     // F = AB'
     // T
     R4 = digitalRead(A3) & InputB[0];
-	R3 = digitalRead(A2) & InputB[1];
+	  R3 = digitalRead(A2) & InputB[1];
     R2 = digitalRead(A1) & InputB[2];
     R1 = digitalRead(A0) & InputB[3];
 
@@ -262,7 +262,7 @@ void seletion() {
 	// T 
       
     R4 = !digitalRead(A0) || InputB[0];
-	R3 = !digitalRead(A1) || InputB[1];
+	  R3 = !digitalRead(A1) || InputB[1];
     R2 = !digitalRead(A2) || InputB[2];
     R1 = !digitalRead(A3) || InputB[3];
     
@@ -284,7 +284,7 @@ void seletion() {
     // F = A XOR B'
     // T 
     R4 = digitalRead(A0) ^ InputB[0];
-	R3 = digitalRead(A1) ^ InputB[1];
+	  R3 = digitalRead(A1) ^ InputB[1];
     R2 = digitalRead(A2) ^ InputB[2];
     R1 = digitalRead(A3) ^ InputB[3];
     
@@ -336,7 +336,7 @@ void seletion() {
     // F = 0011
     // T
     R4 = digitalRead(A0) & InputB[0];
-	R3 = digitalRead(A1) & InputB[1];
+	  R3 = digitalRead(A1) & InputB[1];
     R2 = digitalRead(A2) & InputB[2];
     R1 = digitalRead(A3) & InputB[3];
     
@@ -376,7 +376,7 @@ void seletion() {
     // F = A + B'
     
     R4 = digitalRead(A0) | !InputB[0];
-	R3 = digitalRead(A1) | !InputB[1];
+	 R3 = digitalRead(A1) | !InputB[1];
     R2 = digitalRead(A2) | !InputB[2];
     R1 = digitalRead(A3) | !InputB[3];
     
@@ -398,7 +398,7 @@ void seletion() {
    // Logical Operation 
     // F = A + B
     R4 = digitalRead(A0) || InputB[0];
-	R3 = digitalRead(A1) || InputB[1];
+	  R3 = digitalRead(A1) || InputB[1];
     R2 = digitalRead(A2) || InputB[2];
     R1 = digitalRead(A3) || InputB[3];
     
