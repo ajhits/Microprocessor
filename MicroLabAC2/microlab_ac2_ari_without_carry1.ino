@@ -650,6 +650,81 @@ void seletion() {
       digitalRead(value_A3) == 1 &
       digitalRead(value_A4) == 0)
   {
+    
+
+//HLHL
+//F = (A+B’) PLUS AB PLUS 1
+//A = 0101
+//F = 1111
+    int Cin = 0;
+    //(A+B’)
+    int A3s = digitalRead(A3) | !InputB[3]; 
+    int A2s = digitalRead(A2) | !InputB[2];
+    int A1s = digitalRead(A1) | !InputB[1];
+    int A0s = digitalRead(A0) | !InputB[0];
+    
+    
+    //AB
+    int B3s = digitalRead(A3) & InputB[3]; 
+    int B2s = digitalRead(A2) & InputB[2];
+    int B1s = digitalRead(A1) & InputB[1];
+    int B0s = digitalRead(A0) & InputB[0];
+    
+    //F = (A+B’) PLUS AB 
+    
+    //S1 
+    int s1 = A3s ^ B3s ^ Cin; 
+ 	//Carry
+  	Cin = (A3s ^ B3s) & Cin | A3s & B3s; 
+    
+        
+    //S2
+    int s2 = A2s ^ B2s ^ Cin; 
+  
+ 	//Carry
+  	Cin = (A2s ^ B2s) & Cin | A2s & B2s;
+
+     //S3
+    int s3 = A1s ^ B1s ^ Cin; 
+  
+ 	//Carry
+  	Cin = (A1s ^ B1s) & Cin | A1s & B1s;
+
+    
+     //S4
+    int s4 = A0s ^ B0s ^ Cin; 
+  
+ 	//Carry
+  	Cin = (A0s ^ B0s) & Cin | A0s & B0s;
+    
+    //(A+B’) PLUS AB PLUS 1
+    
+    //S1 
+    int sS1 = s1 ^ 1 ^ Cin; 
+ 	//Carry
+  	Cin = (s1 ^ 1) & Cin | s1 & 1; 
+    
+    //S2 
+    int sS2 = s2 ^ 0 ^ Cin; 
+ 	//Carry
+  	Cin = (s2 ^ 0) & Cin | s2 & 0; 
+    
+    //S3 
+    int sS3 = s3 ^ 0 ^ Cin; 
+ 	//Carry
+  	Cin = (s3 ^ 0) & Cin | s3 & 0;    
+  
+    //S3 
+    int sS4 = s4 ^ 0 ^ Cin; 
+ 	//Carry
+  	Cin = (s4 ^ 0) & Cin | s4 & 0; 
+    
+    digitalWrite(10,Cin);
+  	digitalWrite(9,sS4);
+  	digitalWrite(8,sS3);
+  	digitalWrite(7,sS2);
+  	digitalWrite(6,sS1);
+    
     Serial.println("11 selection");
   }  
   
