@@ -415,7 +415,6 @@ void seletion() {
   {
     // Logical Function
     // F = A
-    
     digitalWrite(6, digitalRead(A0));
     digitalWrite(7, digitalRead(A1));
     digitalWrite(8, digitalRead(A2));
